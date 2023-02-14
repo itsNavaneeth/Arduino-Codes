@@ -30,8 +30,8 @@ int count;
  * Define UBIDOTS Constants
  ****************************************/
 const char *UBIDOTS_TOKEN = "BBFF-LtAIEbHEpPlRavdXFOC9Nu8SRnTN9y";
-const char *WIFI_SSID = "WIFI_NAME";     // Put here your Wi-Fi SSID
-const char *WIFI_PASS = "WIFI_PASSWORD"; // Put here your Wi-Fi password
+const char *WIFI_SSID = "Airtel Hotspot";     // Put here your Wi-Fi SSID
+const char *WIFI_PASS = "Avengers4"; // Put here your Wi-Fi password
 const char *DEVICE_LABEL = "esp32";
 const char *VARIABLE_LABEL = "soil-moisture";
 const char *VARIABLE_LABEL_SUBSCRIBE = "blue-light";
@@ -111,8 +111,10 @@ void loop()
 
     else if (global_ubi == "3")
     {
+        digitalWrite(RELAY_PIN, HIGH);
         digitalWrite(LED_BUILTIN, HIGH); // turn the LED on (HIGH is the voltage level)
-        delay(10000);                    // wait for 10 second
+        delay(10000);   
+        digitalWrite(RELAY_PIN, LOW);                 // wait for 10 second
         digitalWrite(LED_BUILTIN, LOW);  // turn the LED off by making the voltage LOW
         delay(10000);
     }
@@ -167,7 +169,7 @@ void loop()
         Serial.println("L");
     }
 
-    newFlowRate = float(flowRate);
+    int newFlowRate = float(flowRate);
     ThingSpeak.setField(4, totalLitres);
     ThingSpeak.setField(5, newFlowRate);
     ThingSpeak.setField(6, global_ubi);

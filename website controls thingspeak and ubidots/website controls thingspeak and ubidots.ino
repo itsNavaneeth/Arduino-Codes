@@ -12,11 +12,11 @@
 #define CHANNEL_API_KEY "KABEELQGDX1QB5WH"
 
 /****************************************
- * Define Constants
+ * Define Constants!
  ****************************************/
 const char *UBIDOTS_TOKEN = "BBFF-LtAIEbHEpPlRavdXFOC9Nu8SRnTN9y";  // Put here your Ubidots TOKEN
-const char *WIFI_SSID = "Airtel-Hotspot-603D";      // Put here your Wi-Fi SSID
-const char *WIFI_PASS = "3iyn4jt2";      // Put here your Wi-Fi password
+const char *WIFI_SSID = "chatgpt";      // Put here your Wi-Fi SSID
+const char *WIFI_PASS = "iotmans!";      // Put here your Wi-Fi password
 const char *DEVICE_LABEL = "esp32";   // Put here your Device label to which data  will be published
 const char *VARIABLE_LABEL = "soil-moisture"; // Put here your Variable label to which data  will be published
 const char *VARIABLE_LABEL_SUBSCRIBE = "blue-light"; // Replace with your variable label to subscribe to
