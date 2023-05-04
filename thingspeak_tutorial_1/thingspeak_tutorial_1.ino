@@ -8,8 +8,8 @@ WiFiClient client;
 
 int counter = 0;
 
-#define WIFI_NETWORK "Airtel-Hotspot-603D"
-#define WIFI_PASSWORD "3iyn4jt2"
+#define WIFI_NETWORK "Marvel Studios"
+#define WIFI_PASSWORD "Avengers4"
 #define WIFI_TIMEOUT_MS 20000
 
 void connectToWifi(){
@@ -26,10 +26,15 @@ void connectToWifi(){
 
   if(WiFi.status()!= WL_CONNECTED){
     Serial.println("Failed!");
+    digitalWrite(LED_BUILTIN, 1);
+    delay(500);
+    digitalWrite(LED_BUILTIN, 0);
     //take action
   }else{
     Serial.print("Connected!");
+    digitalWrite(LED_BUILTIN, 1);
     Serial.println(WiFi.localIP());
+    digitalWrite(LED_BUILTIN, 1);
   }
 
 }
@@ -41,7 +46,7 @@ void setup() {
   ThingSpeak.begin(client);
 
   pinMode(LED_BUILTIN, OUTPUT);
-  digitalWrite(LED_BUILTIN, 1);
+  // digitalWrite(LED_BUILTIN, 0);
 }
 
 void loop() {
@@ -49,14 +54,14 @@ void loop() {
   counter++;
 
   int led = ThingSpeak.readIntField(CHANNEL_ID, 4);
-  if(led == 1){
-    digitalWrite(LED_BUILTIN, 1);
-    Serial.println("LED is ON");
-  }
-  else if(led == 0){
-    digitalWrite(LED_BUILTIN, 0);
-    Serial.println("LED is OFF");
-  }
+  // if(led == 1){
+  //   digitalWrite(LED_BUILTIN, 1);
+  //   Serial.println("LED is ON");
+  // }
+  // else if(led == 0){
+  //   digitalWrite(LED_BUILTIN, 0);
+  //   Serial.println("LED is OFF");
+  // }
 
 
   int x = analogRead(35);
@@ -67,8 +72,8 @@ void loop() {
   
   ThingSpeak.setField(1, counter);
   ThingSpeak.setField(2, WiFi.RSSI());
-  ThingSpeak.setField(3, x);
-  ThingSpeak.setField(4, led);
+  // ThingSpeak.setField(3, x);
+  // ThingSpeak.setField(4, led);
   ThingSpeak.writeFields(CHANNEL_ID, CHANNEL_API_KEY);
 
   delay(15000);
